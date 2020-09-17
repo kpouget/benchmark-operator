@@ -15,25 +15,26 @@ metadata:
   name: iperf3-benchmark
   namespace: my-ripsaw
 spec:
-  name: iperf3
-  args:
-    pairs: 1
-    hostnetwork: false
-    pin: true
-    pin_server: "master-0"
-    pin_client: "master-1"
-    port: 5201
-    transmit_type: time
-    transmit_value: 60
-    omit_start: 0
-    length_buffer: 128K
-    window_size: 64k
-    ip_tos: 0
-    mss: 900
-    streams: 1
-    extra_options_client: ' '
-    extra_options_server: ' '
-    #retries: 200
+  workload:
+    name: iperf3
+    args:
+      pairs: 1
+      hostnetwork: false
+      pin: true
+      pin_server: "master-0"
+      pin_client: "master-1"
+      port: 5201
+      transmit_type: time
+      transmit_value: 60
+      omit_start: 0
+      length_buffer: 128K
+      window_size: 64k
+      ip_tos: 0
+      mss: 900
+      streams: 1
+      extra_options_client: ' '
+      extra_options_server: ' '
+      #retries: 200
 ```
 Optional argument:
 `retries` is an optional argument that can be used if you are running long tests
@@ -112,7 +113,7 @@ $ oc adm policy add-scc-to-user privileged -z benchmark-operator
 Once done creating/editing the resource file, you can run it by:
 
 ```bash
-# kubectl apply -f resources/crds/benchmark_v1alpha1_iperf3_cr.yaml # if edited the original one
+# kubectl apply -f resources/crds/ripsaw_v1alpha1_iperf3_cr.yaml # if edited the original one
 # kubectl apply -f <path_to_file> # if created a new cr file
 ```
 
